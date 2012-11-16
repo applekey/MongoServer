@@ -9,9 +9,6 @@ var MongoConnector = require('./MongoConnector').MongoConnector;
 
 // PUBLIC METHODS
 DataProvider = function(host, port) {
-    //    this.db = new Db('applekeyTest', new Server('alex.mongohq.com', 10041, {
-    //        auto_reconnect: true
-    //    }), {});
     this.db = MongoConnector.GetConnection(host, port);
 }
 

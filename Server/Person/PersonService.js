@@ -1,5 +1,7 @@
 var DataProvider = require('../MongoProvider').DataProvider;
 var MinSchemaValidator = require('../MinimumSchemaValidator').MinimumSchemaValidator;
+var HotLinkService = require('./HotLinkService').HotlinkService;
+var DocumentService = require('../Document/DocumentService').DocumentService;
 
 var MinLoginInformation = {
     UserName: 'Username',
@@ -9,7 +11,10 @@ var MinLoginInformation = {
 var collectionId = 'Mongo_Users';
 
 PersonService = function() {
-    this.DataProvider = new DataProvider('alex.mongohq.com', 10041); 
+    this.DataProvider = new DataProvider('alex.mongohq.com', 10041);
+    this.SchemaValidator = new MinSchemaValidator(MinLoginInformation);
+    this.DocumentService = new DocumentService();
+    this.HotlinkService = new HotLinkService(this.DocumentService);
 }   
 
 PersonService.prototype.CreateLogin = function(loginInformation, callback) {
@@ -36,8 +41,9 @@ PersonService.prototype.CreateLogin = function(loginInformation, callback) {
 
 PersonService.prototype.Login = function(loginInformation, callback) {
     var thatDbProvider= this.DataProvider;
+    var thatLinkService = this.HotlinkService;
 
-    ValidateLoginInformation(loginInformation, function(error) {
+    this.ValidateLoginInformation(loginInformation, function(error) {
         if (error) {
             callback(error);
             return;
@@ -51,17 +57,26 @@ PersonService.prototype.Login = function(loginInformation, callback) {
                 callback(error);
             }
             else {
-                callback(null, account);
+                thatLinkService.ConstructDocumentLinks(account, function(error, linkurls) {
+
+                    if (error) {
+                        callback(error);
+                    }
+                    else {
+                        var fullAccount=[account,linkurls];
+                        
+                        callback(null, fullAccount);
+                    }
+                });
             }
-        });
+            });
     });
 }
 // PRIVATE METHODS
 
-var ValidateLoginInformation = function(loginInformation,callback)
+PersonService.prototype.ValidateLoginInformation = function(loginInformation,callback)
 {
-    var SchemaValidator = new MinSchemaValidator(MinLoginInformation);
-    SchemaValidator.Validate(loginInformation, function(error) {
+    this.SchemaValidator.Validate(loginInformation, function(error) {
         if (error) {
             callback(error);
             return;
