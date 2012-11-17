@@ -107,3 +107,4 @@
 {"ts":1353145534253,"patch":[[{"diffs":[[0,"  }\n    });\n"],[1,"}\n"],[0,"            "]],"start1":743,"start2":743,"length1":24,"length2":26}]],"length":1857,"saved":false}
 {"ts":1353145541291,"patch":[[{"diffs":[[0,"    });\n"],[-1,"\n\n\n\n\n\n\n\n\n"],[0,"        "]],"start1":720,"start2":720,"length1":25,"length2":16}]],"length":1848,"saved":false}
 {"ts":1353145557593,"patch":[[{"diffs":[[0,";\n    }\n    "],[1,"//"],[0,"var dbDocume"]],"start1":271,"start2":271,"length1":24,"length2":26}]],"length":1850,"saved":false}
+{"ts":1353148856874,"patch":[[{"diffs":[[0,"ror, ids) {\n"],[1,"        console.log(ids);\n"],[0,"        if ("]],"start1":413,"start2":413,"length1":24,"length2":50}]],"length":1876,"saved":false}

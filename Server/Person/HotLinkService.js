@@ -14,6 +14,7 @@ HotlinkService.prototype.ConstructDocumentLinks = function(Person, callback) {
 
     //for now find documents
     this.documentService.GetFiveDummyIds(function(error, ids) {
+        console.log(ids);
         if (error) callback(error);
         else {
             that.ReturnHotLinkUrl(ids, function(error, linkurls) {

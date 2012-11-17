@@ -33,13 +33,11 @@ DocumentService.prototype.CreateDocument = function(documentInformation, callbac
 
 DocumentService.prototype.RetrieveDocument = function(documentId, callback) {
     var thatDbProvider = this.DataProvider;
-
-    if (typeof documentId !== 'number') {
-        callback('error, document id is not of type number');
-        return;
-    }
     
-    var findArgs = {Id: documentId};
+    console.log(documentId);
+ 
+    var documentObjectId = thatDbProvider.ConstructObjecId(documentId);
+    var findArgs = {_id: documentObjectId};
 
     thatDbProvider.find(collectionId, findArgs, function(error, document) {
         if (error) {
@@ -63,7 +61,7 @@ DocumentService.prototype.GetFiveDummyIds = function(callback)
             var linkids = [];
             for(var i in documents)
             {
-                linkids.push(documents[i].Id);
+                linkids.push(documents[i]._id);
             }
             
             callback(null, linkids);
