@@ -54,6 +54,24 @@ DocumentService.prototype.RetrieveDocument = function(documentId, callback) {
 
 
 // PRIVATE METHODS
+DocumentService.prototype.GetFiveDummyIds = function(callback)
+{
+    var thatDbProvider = this.DataProvider;
+    thatDbProvider.findFive(collectionId, function(error, documents) {
+        if (error) callback(error);
+        else {
+            var linkids = [];
+            for(var i in documents)
+            {
+                linkids.push(documents[i].Id);
+            }
+            
+            callback(null, linkids);
+        }
+        });
+}
+
+
 DocumentService.prototype.ValidateDocumentInformation = function(documentInformation, callback) {
     var SchemaValidator = new MinSchemaValidator(MinDocumentSchema);
     SchemaValidator.Validate(documentInformation, function(error) {

@@ -5,28 +5,33 @@ HotlinkService = function(DocumentService) {
 }
 
 HotlinkService.prototype.ConstructDocumentLinks = function(Person, callback) {
+    var that = this;
     if (Person === null) {
         callback('person is null');
         return;
     }
-    var dbDocumentLinks = Person.DocumentIdLinks;
-    
-    this.ReturnHotLinkUrl(dbDocumentLinks, function(error, linkurls) {
-        if (error) {
-            callback(error);
-        }
-        else {
-            callback(null, linkurls);
-        }
+    //var dbDocumentLinks = Person.DocumentIdLinks;
 
+    //for now find documents
+    this.documentService.GetFiveDummyIds(function(error, ids) {
+        if (error) callback(error);
+        else {
+            that.ReturnHotLinkUrl(ids, function(error, linkurls) {
+                if (error) {
+                    callback(error);
+                }
+                else {
+                    callback(null, linkurls);
+                }
+            });
+        }
     });
 }
-
+                
 //// PRIVATE METHODS////
 
 HotlinkService.prototype.ReturnHotLinkUrl = function(dbDocumentLinksObject,callback)
 {
-    
     if (dbDocumentLinksObject === null) {
         callback('dBDocumentLinkObject is null');
         return;

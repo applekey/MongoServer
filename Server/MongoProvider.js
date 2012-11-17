@@ -12,6 +12,34 @@ DataProvider = function(host, port) {
     this.db = MongoConnector.GetConnection(host, port);
 }
 
+
+DataProvider.prototype.findFive = function(collectionId, callback)
+{
+    var thatdb = this.db;
+    Open(thatdb, function(error) {
+        if (error) {
+            //thatdb.close();
+            callback(error);
+            return;
+        }
+        var collection = new mongodb.Collection(thatdb, collectionId);
+        collection.find({}, {
+            limit: 5
+        }).toArray( function(err, docs){
+            if (error) {
+                //thatdb.close();
+                callback(err);
+            }
+            else
+            {
+             //thatdb.close();
+             callback(null,docs);
+            }
+        });
+    })
+}
+
+
 DataProvider.prototype.find = function(collectionId, findargs, callback) {
 
     var thatdb = this.db;
