@@ -40,15 +40,6 @@ DataProvider.prototype.findFive = function(collectionId, callback)
 }
 
 
-DataProvider.prototype.ConstructObjecId = function(id)
-{
-    var m = String(id);
-    console.log('id is'+ m);
-    var len = m.length;
-    
-    return mongodb.ObjectID.createFromHexString(m);
-}
-
 DataProvider.prototype.find = function(collectionId, findargs, callback) {
 
     var thatdb = this.db;
@@ -149,8 +140,22 @@ DataProvider.prototype.deleteall = function(collectionId, callback) {
 
     });
 }
+
+
+
+
 // PRIVATE METHODS
 // TODO MAKE THESE ACTUALLY PRIVATE
+
+DataProvider.prototype.ConstructObjecId = function(id)
+{
+    var m = String(id);
+    console.log('id is'+ m);
+    var len = m.length;
+    
+    return mongodb.ObjectID.createFromHexString(m);
+}
+
 
 var Open = function(mdb, callback) {
 

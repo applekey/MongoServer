@@ -90,20 +90,27 @@ app.get('/AddUser', function(req, res) {
     })
 });
 
-app.get('/GetUser', function(req, res) {
-    //var requestObject = req.body;
-    //var contact = eval(requestObject);
 
-    var loginInformation = {
-        UserName: 'Applekey',
-        Password: 'Password'
-    }
 
-    personService.Login(loginInformation, function(error, user) {
+app.post('/Login', function(req, res) {
+    var requestObject = req.body;
+    var loginInform = eval(requestObject);
+
+//    var loginInformation = {
+//        UserName: 'Applekey',
+//        Password: 'Password'
+//    }
+
+    personService.Login(loginInform, function(error, user) {
         if (error) res.send(error);
-        else res.send(user);
+        else {
+            console.log(user);
+            res.send(user,404);
+        }
     })
 });
+
+
 
 
 
