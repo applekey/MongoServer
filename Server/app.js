@@ -79,8 +79,8 @@ app.get('/AddUser', function(req, res) {
 
     var loginInformation = {
         UserName: 'Username',
-        Password: 'Password',
-        Links: 'links'
+        Password: 'Passwford',
+        DocumentIdLinks: []
     }
 
 
@@ -95,12 +95,12 @@ app.get('/GetUser', function(req, res) {
     //var contact = eval(requestObject);
 
     var loginInformation = {
-        UserName: 'Username',
+        UserName: 'Applekey',
         Password: 'Password'
     }
 
-    personService.Login(loginInformation, function(a, user) {
-        if (a) res.send('bad');
+    personService.Login(loginInformation, function(error, user) {
+        if (error) res.send(error);
         else res.send(user);
     })
 });

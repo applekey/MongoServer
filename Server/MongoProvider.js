@@ -22,7 +22,7 @@ DataProvider.prototype.find = function(collectionId, findargs, callback) {
             return;
         }
         var collection = new mongodb.Collection(thatdb, collectionId);
-        collection.find(findargs).toArray(function(err, docs) {
+        collection.findOne(findargs,function(err, docs) {
             if (error) {
                 //thatdb.close();
                 callback(err);

@@ -15,7 +15,7 @@ DocumentService = function() {
 };
 DocumentService.prototype.CreateDocument = function(documentInformation, callback) {
     var thatDbProvider = this.DataProvider;
-    ValidateDocumentInformation(documentInformation, function(error) {
+    this.ValidateDocumentInformation(documentInformation, function(error) {
         if (error) {
             callback(error);
             return;
@@ -54,7 +54,7 @@ DocumentService.prototype.RetrieveDocument = function(documentId, callback) {
 
 
 // PRIVATE METHODS
-var ValidateDocumentInformation = function(documentInformation, callback) {
+DocumentService.prototype.ValidateDocumentInformation = function(documentInformation, callback) {
     var SchemaValidator = new MinSchemaValidator(MinDocumentSchema);
     SchemaValidator.Validate(documentInformation, function(error) {
         if (error) {

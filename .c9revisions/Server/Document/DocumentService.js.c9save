@@ -17,3 +17,6 @@
 {"ts":1352952979256,"patch":[[{"diffs":[[0,"    if ("],[1,"!"],[0,"document"]],"start1":1935,"start2":1935,"length1":16,"length2":17},{"diffs":[[0,"Inserted"],[-1," !="],[0," instanc"]],"start1":1968,"start2":1968,"length1":19,"length2":16}]],"length":2544,"saved":false}
 {"ts":1352953252020,"patch":[[{"diffs":[[0,"d !="],[-1,"="],[0," '"],[-1,"Int"],[1,"number"],[0,"') {"]],"start1":1112,"start2":1112,"length1":14,"length2":16}]],"length":2546,"saved":false}
 {"ts":1352953254088,"patch":[[{"diffs":[[0,"ocumentId !="],[1,"="],[0," 'number') {"]],"start1":1104,"start2":1104,"length1":24,"length2":25}]],"length":2547,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1353038232137,"patch":[[{"diffs":[[0,"METHODS\n"],[-1,"var"],[1,"DocumentService.prototype."],[0," Validat"]],"start1":1480,"start2":1480,"length1":19,"length2":42}]],"length":2570,"saved":false}
+{"ts":1353038239668,"patch":[[{"diffs":[[0,"ototype."],[-1," "],[0,"Validate"]],"start1":1506,"start2":1506,"length1":17,"length2":16}]],"length":2569,"saved":false}
+{"ts":1353038252217,"patch":[[{"diffs":[[0,"er;\n    "],[1,"this."],[0,"Validate"]],"start1":569,"start2":569,"length1":16,"length2":21}]],"length":2574,"saved":false}
