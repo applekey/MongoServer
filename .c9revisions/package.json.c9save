@@ -1,4 +1,0 @@
-{"ts":1353159926501,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"{\n  \"name\": \"application-name\",\n  \"version\": \"0.0.1\",\n  \"private\": true,\n  \"scripts\": {\n    \"start\": \"node app\"\n  },\n  \"dependencies\": {\n    \"express\": \"3.0.2\",\n    \"jade\": \"*\"\n  }\n}"]],"start1":0,"start2":0,"length1":0,"length2":182}]],"length":182}
-{"contributors":[],"silentsave":false,"ts":1353159935832,"patch":[[{"diffs":[[0,"\"*\"\n  }\n"],[1,"  \"engines\": {\n    \"node\": \"0.8.x\",\n    \"npm\": \"1.1.x\"\n"],[0,"}"]],"start1":173,"start2":173,"length1":9,"length2":64}]],"length":237,"saved":false}
-{"ts":1353159939448,"patch":[[{"diffs":[[0,"\": \""],[-1,"0.8.x"],[1,"*"],[0,"\",\n "]],"start1":205,"start2":205,"length1":13,"length2":9}]],"length":233,"saved":false}
-{"ts":1353159942354,"patch":[[{"diffs":[[0,"\": \""],[-1,"1.1.x"],[1,"*"],[0,"\"\n}"]],"start1":221,"start2":221,"length1":12,"length2":8}]],"length":229,"saved":false}
