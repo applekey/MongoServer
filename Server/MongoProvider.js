@@ -141,6 +141,7 @@ DataProvider.prototype.deleteall = function(collectionId, callback) {
     });
 }
 
+DataProvider.prototype.Update = function(
 
 
 
