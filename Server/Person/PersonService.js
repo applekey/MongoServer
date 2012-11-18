@@ -126,6 +126,57 @@ PersonService.prototype.UploadNewDocuments = function(loginInformation, doc, cal
     });
 }
 
+PersonService.prototype.UpvoteDocument = function(votePackage, callback) {
+
+    var docService = this.DocumentService;
+    if (!votePackage) {
+        callback('vote package is emtyp');
+        return;
+    }
+
+    var logingCred = votePackage.LoginCred;
+    var documentId = votePackage.DocId;
+    var voteDirection = votePackage.VoteDirection;
+
+    if (typeof logingCred === 'undefined') {
+        callback('logingCred is empty');
+        return;
+    }
+    
+    if(typeof documentId === 'undefinied')
+    {
+        callback('documentid is empty');
+        return;
+    }
+    
+    if(typeof voteDirection === 'undefinied')
+    {
+        callback('vote is undefined in package');
+        return;
+    }
+
+    this.LoginWithCredentials(logingCred, function(error, InternalAccount) {
+        if (error) {
+            callback(error);
+            return;
+        }
+        
+        var vote = { Voter: InternalAccount._id, Direction: voteDirection}
+        
+        docService.UpdateVoteCount(documentId, vote, function(error) {
+            if (error) {
+                callback(error);
+                return;
+            }
+            else {
+                callback(null);
+                return;
+            }
+        });
+    
+    });
+}
+
 
 
 // PRIVATE METHODS

@@ -49,7 +49,26 @@ DocumentService.prototype.RetrieveDocument = function(documentId, callback) {
     });
 }
 
+DocumentService.prototype.UpdateVoteCount = function(documentId, vote, callback){
+    
+    var thatDbProvider = this.DataProvider;
+    var documentObjectId = thatDbProvider.ConstructObjecId(documentId);
+    var findArgs = {
+        _id: documentObjectId
+    };
+    var updateArgs = {
+        $push: {
+            Votes: vote
+        }
+    };
+    thatDbProvider.updateField(collectionId, findArgs, updateArgs, function(error) {
 
+        if (error) {
+            callback(error);
+        }
+        else callback(null);
+    });
+}
 
 // PRIVATE METHODS
 DocumentService.prototype.GetFiveDummyIds = function(callback)

@@ -92,16 +92,16 @@ app.get('/AddUser', function(req, res) {
 
 
 
-app.post('/Login', function(req, res) {
+app.get('/Login', function(req, res) {
     var requestObject = req.body;
     var loginInform = eval(requestObject);
 
-//    var loginInformation = {
-//        UserName: 'Applekey',
-//        Password: 'Password'
-//    }
+    var loginInformation = {
+        UserName: 'Applekey',
+        Password: 'Password'
+    }
 
-    personService.FormResponse(loginInform, function(error, user) {
+    personService.FormResponse(loginInformation, function(error, user) {
         if (error) res.send(error);
         else {
             console.log(user);
@@ -114,19 +114,47 @@ app.post('/UploadM', function(req, res) {
     var requestObject = req.body;
     var uploadRequest = eval(requestObject);
     
+    
+    console.log(uploadRequest);
+    
     var logingInformation =uploadRequest.LoginInformation;
-    var document = uploadRequest.Document;
+    var document = uploadRequest.Link;
     
 //    newDocument ={LowResImageLink:'ab',HighResImageLink: 'cd'};
 //     var loginInformation = {
 //        UserName: 'Applekey',
 //        Password: 'Password'
 //    }
+
+    console.log(logingInformation);
+    console.log(document);
     
     personService.UploadNewDocuments(logingInformation,document, function(error) {
-        if (error) res.send(error);
+        if (error) {console.log(error); res.send(error);}
         else {
-            res.send('googd');
+            {console.log('good'); res.send('googd');}
+        }
+    })
+});
+
+
+app.get('/UpVote', function(req, res) {
+//    var requestObject = req.body;
+//    var uploadRequest = eval(requestObject);
+    
+    var votePackage = {
+        LoginCred: {
+            UserName: 'Applekey',
+            Password: 'Password'
+        },
+        DocId: "50a46fe37203122544000001",
+        VoteDirection: 1
+    }
+    
+    personService.UpvoteDocument(votePackage, function(error) {
+        if (error) {console.log(error); res.send(error);}
+        else {
+            {console.log('good'); res.send('googd');}
         }
     })
 });

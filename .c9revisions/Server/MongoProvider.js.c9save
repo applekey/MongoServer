@@ -43,3 +43,7 @@
 {"ts":1353161691487,"patch":[[{"diffs":[[0,"e(docId,"],[1," newLinks"],[0," , funct"]],"start1":2806,"start2":2806,"length1":16,"length2":25}]],"length":5200,"saved":false}
 {"ts":1353161693944,"patch":[[{"diffs":[[0,"newLinks"],[-1," "],[0,", functi"]],"start1":2815,"start2":2815,"length1":17,"length2":16}]],"length":5199,"saved":false}
 {"contributors":[],"silentsave":false,"ts":1353161768775,"patch":[[{"diffs":[[0,"};\n\nData"],[-1,"Serv"],[1,"Provid"],[0,"er.proto"]],"start1":2319,"start2":2319,"length1":20,"length2":22}]],"length":5201,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1353191683558,"patch":[[{"diffs":[[0,"e.update"],[1,"Field"],[0,"= functi"]],"start1":2344,"start2":2344,"length1":16,"length2":21}]],"length":5206,"saved":false}
+{"ts":1353201926998,"patch":[[{"diffs":[[0,"d,docId,"],[-1,"newLinks"],[1,"updateField"],[0,",callbac"]],"start1":2379,"start2":2379,"length1":24,"length2":27}]],"length":5209,"saved":false}
+{"ts":1353201948509,"patch":[[{"diffs":[[0,"Id, "],[-1,"newLinks"],[1,"updateField"],[0,", fu"]],"start1":2821,"start2":2821,"length1":16,"length2":19}]],"length":5212,"saved":false}
+{"ts":1353202846083,"patch":[[{"diffs":[[0,"   \n"],[-1,"        var oID = that.ConstructObjecId(String(docId));\n        \n        var docId = {_id:oID};\n"],[0,"    "]],"start1":2621,"start2":2621,"length1":104,"length2":8}]],"length":5116,"saved":false}

@@ -92,7 +92,7 @@ DataProvider.prototype.findAll = function(collectionId, callback) {
     });
 };
 
-DataProvider.prototype.update= function(collectionId,docId,newLinks,callback)
+DataProvider.prototype.updateField= function(collectionId,docId,updateField,callback)
 {
     var that = this;
     var thatdb = this.db;
@@ -104,11 +104,8 @@ DataProvider.prototype.update= function(collectionId,docId,newLinks,callback)
             return;
         }
         
-        var oID = that.ConstructObjecId(String(docId));
-        
-        var docId = {_id:oID};
         var collection = new mongodb.Collection(thatdb, collectionId);
-        collection.update(docId, newLinks, function(error) {
+        collection.update(docId, updateField, function(error) {
             if (error) {
                 //thatdb.close();
                 callback(error);
