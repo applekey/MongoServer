@@ -194,7 +194,14 @@ PersonService.prototype.ConstructClientResponse = function(InternalAccount, DocL
     var abrigedLinks = [];
     for(var i in DocLinks)
     {
-        var linkObj = {LowResImageLink:DocLinks[i].LowResImageLink,HighResImageLink:DocLinks[i].HighResImageLink};
+        var voteCount = calculateVotes(DocLinks[i].Votes);
+        
+        var linkObj = {
+            Id:DocLinks[i]._id,
+            Votes:voteCount,
+            LowResImageLink: DocLinks[i].LowResImageLink,
+            HighResImageLink: DocLinks[i].HighResImageLink
+        };
         abrigedLinks.push(linkObj);
     }
     
@@ -228,6 +235,21 @@ PersonService.prototype.ValidateLoginInformation = function(loginInformation,cal
 
 function isEmpty(str) {
     return (!str || 0 === str.length);
+}
+
+function calculateVotes(votes)
+{
+    var voteCount = 0;
+    if(!votes)
+        return 0;
+    
+    for(var i in votes)
+    {
+        var direction = votes[i].Direction;
+        if(typeof direction !=='undefined')
+            voteCount +=votes[i].Direction;
+    }
+    return voteCount;
 }
 
 exports.PersonService = PersonService;
